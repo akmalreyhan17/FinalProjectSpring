@@ -1,0 +1,22 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: API-GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+        - id: ORDER
+          uri: http://localhost:9090
+          predicates:
+            - Path=/**
+      
+        - id: DEMO-SERVICE2
+          uri: http://localhost:9091
+          predicates:
+            - Path=/demo2/**
+
+        - id: DEMO-SERVICE3
+          uri: http://localhost:9092
+          predicates:
+            - Path=/demo3/**
